@@ -11,5 +11,13 @@ struct workData
 
 };
 
+struct drawWork
+{
+
+    workData* work;
+    QPoint point;
+
+};
+
 
 #endif // STRUCTURES_H

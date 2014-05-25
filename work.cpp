@@ -43,17 +43,18 @@ Work::~Work()
 
 void Work::on_pushButton_clicked()
 {
+    workList.clear();
     workData *workDataStructures;
     for (int i=0; i<nameList.count();++i)
     {
         workDataStructures= new workData;
         workDataStructures->name=nameList[i]->text();
         workDataStructures->dependence=dependList[i]->text();
-        workDataStructures->time=timeList[1]->text().toInt();
+        workDataStructures->time=timeList[i]->text().toInt();
         workList.append(workDataStructures);
     }
 
-    graph* graph_= new graph();
+    graph* graph_= new graph(workList, this);
     graph_->show();
 
 }
