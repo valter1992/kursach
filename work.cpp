@@ -1,6 +1,7 @@
 #include "work.h"
 #include "ui_work.h"
 #include <QLabel>
+#include "graph.h"
 
 
 
@@ -51,4 +52,8 @@ void Work::on_pushButton_clicked()
         workDataStructures->time=timeList[1]->text().toInt();
         workList.append(workDataStructures);
     }
+
+    graph* graph_= new graph();
+    graph_->show();
+
 }
