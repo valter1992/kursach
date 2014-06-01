@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QLineEdit>
 #include "structures.h"
+#include "multilist.h"
 
 namespace Ui {
 class Work;
@@ -20,8 +21,10 @@ public:
 
     QVector<workData*> workList;
     QVector<QLineEdit*>nameList;
-    QVector<QLineEdit*>dependList;
+    QVector<MultiListWidget*>dependList;
     QVector<QLineEdit*>timeList;
+
+
 
 private slots:
     void on_pushButton_clicked();

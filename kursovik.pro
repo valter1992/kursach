@@ -19,12 +19,14 @@ LIBS += /usr/local/qwt-6.1.0/lib/libqwt.so.6
 SOURCES += main.cpp\
         mainwindow.cpp \
     work.cpp \
-    graph.cpp
+    graph.cpp \
+    multilist.cpp
 
 HEADERS  += mainwindow.h \
     work.h \
     structures.h \
-    graph.h
+    graph.h \
+    multilist.h
 
 FORMS    += mainwindow.ui \
     work.ui \

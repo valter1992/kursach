@@ -1,6 +1,7 @@
 #include "work.h"
 #include "ui_work.h"
 #include <QLabel>
+#include <QStringList>
 #include "graph.h"
 
 
@@ -18,6 +19,14 @@ Work::Work(int countWork, QWidget *parent):
 {
     ui->setupUi(this);
     QLineEdit *ln;
+    QStringList lst;
+    for(int i=1; i<=countWork; ++i)
+    {
+        lst<<"b"+QString::number(i);
+    }
+
+    MultiListWidget *ml;
+
     for(int i=0;i<countWork;++i)
     {
         ln= new QLineEdit(this);
@@ -27,13 +36,17 @@ Work::Work(int countWork, QWidget *parent):
         ln= new QLineEdit(this);
         nameList.append(ln);
         ui->verticalLayout_2->addWidget(ln);
+        ml= new MultiListWidget();
+        ml->addItems(lst);
+        ml->removeItem(i);
+        dependList.append(ml);
+        ui->verticalLayout_3->addWidget(ml);
         ln= new QLineEdit(this);
-        dependList.append(ln);
-        ui->verticalLayout_3->addWidget(ln);
-        ln= new QLineEdit(this);
+        ln->setInputMask("900");
         timeList.append(ln);
         ui->verticalLayout_4->addWidget(ln);
     }
+
 }
 
 Work::~Work()
@@ -49,7 +62,7 @@ void Work::on_pushButton_clicked()
     {
         workDataStructures= new workData;
         workDataStructures->name=nameList[i]->text();
-        workDataStructures->dependence=dependList[i]->text();
+        workDataStructures->dependence=dependList[i]->getDisplayText();
         workDataStructures->time=timeList[i]->text().toInt();
         workList.append(workDataStructures);
     }
